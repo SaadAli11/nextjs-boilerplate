@@ -7,6 +7,7 @@ import rmtdevImg from "@/public/rmtdev.png";
 import accountify from "@/public/accountify.png";
 import wordanalyticsImg from "@/public/wordanalytics.png";
 
+
 export const links = [
   {
     name: "Home",
@@ -87,20 +88,36 @@ export const projectsData = [
   },
 ] as const;
 
+import {ReactIcon} from '../lib/icon'
+import {HTMLIcon} from '../lib/icon'
+import {CSSIcon} from '../lib/icon'
+import {JSIcon} from '../lib/icon'
+import {TSIcon} from '../lib/icon'
+import {NextIcon} from '../lib/icon'
+import {MaterialIcon} from '../lib/icon'
+import {ReactStrapIcon} from '../lib/icon'
+import {ReduxToolkitIcon} from '../lib/icon'
+import {RestFulApiIcon} from '../lib/icon'
+import {GraphQlIcon} from '../lib/icon'
+import {ApolloIcon} from '../lib/icon'
+import {GitIcon} from '../lib/icon'
+import {DSAIcon} from '../lib/icon'
+import {BootstrapIcon} from '../lib/icon'
+
 export const skillsData = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Material UI",
-  "ReactStrap",
-  "Redux Toolkit",
-  "RESTful API",
-  "GraphQL",
-  "Apollo",
-  "Git",
-  "DSA",
-  "SQL",
+  {name: "React", icon: <ReactIcon/>},
+  {name: "Next.js", icon: <NextIcon/>},
+  {name: "Redux Toolkit", icon: <ReduxToolkitIcon/>},
+  {name: "RESTful API", icon: <RestFulApiIcon/>},
+  {name: "GraphQL", icon: <GraphQlIcon/>},
+  {name: "TypeScript", icon: <TSIcon/>},
+  {name: "Material UI", icon: <MaterialIcon/>},
+  {name: "ReactStrap", icon: <ReactStrapIcon/>},
+  {name: "Apollo", icon: <ApolloIcon/>},
+  {name: "Git & GitHub", icon: <GitIcon/>},
+  {name: "HTML5", icon: <HTMLIcon/>},
+  {name: "CSS3", icon: <CSSIcon/>},
+  {name: "Bootstrap", icon: <BootstrapIcon/>},
+  {name: "JavaScript ES6", icon: <JSIcon/>},
+  {name: "DSA", icon: <DSAIcon/>},
 ] as const;

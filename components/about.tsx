@@ -25,7 +25,7 @@ export default function About() {
 
           <span className="italic"> My favorite part of programming</span> is the
           problem-solving aspect. I <span className="underline">love</span> the
-          feeling of finally figuring out a solution to a problem. My stack
+          feeling of finally figuring out a solution to a problem. I have completed <b>10+</b> projects. My stack
           is{" "}
           <span className="font-medium">
           React, Next.js, TypeScript, Redux-toolkit, RESTFul API, GraphQL, Material UI,

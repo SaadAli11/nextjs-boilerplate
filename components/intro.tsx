@@ -9,6 +9,7 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithub, FaStackOverflow } from "react-icons/fa";
 import { useSectionInView } from "../lib/hooks";
 import { useActiveSectionContext } from "../context/active-section-context";
+import imageProfile from "@/public/3.png";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
@@ -31,7 +32,7 @@ export default function Intro() {
             }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=368&h=368&q=100"
+              src={imageProfile}
               alt="Ricardo portrait"
               width="192"
               height="192"
@@ -52,7 +53,7 @@ export default function Intro() {
               duration: 0.7,
             }}
           >
-            👋
+
           </motion.span>
         </div>
       </div>
@@ -62,10 +63,10 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Saad Ali.</span> I'm a{" "}
-        <span className="font-bold">Senior Front-End developer</span> with{" "}
-        <span className="font-bold">2+ years</span> of experience. I enjoy
-        building <span className="italic">web-sites</span>. My focus is{" "}
+        {/*<span className="font-bold">Hello, I'm Saad Ali.</span> I'm a{" "}*/}
+        <span className="font-bold">Senior Front-End Developer</span> with{" "}
+        <span className="font-bold">2+ years</span> of experience.
+        I am dedicated to turning ideas into innovative <span className="italic">web applications</span>. My focus is{" "}
         <span className="underline">React (Next.js)</span>
       </motion.h1>
 
@@ -98,29 +99,32 @@ export default function Intro() {
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
 
-        <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 hover:text-blue-700 hover:bg-blue-50 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 dark:hover:text-blue-700 dark:hover:bg-blue-50"
-          href="https://www.linkedin.com/in/saad-ali-79093921b/"
-          target="_blank"
-        >
-          <BsLinkedin />
-        </a>
+        <div className="flex gap-2">
+          <a
+              className="bg-white p-4 text-gray-700 hover:text-blue-700 hover:bg-blue-50 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 dark:hover:text-blue-700 dark:hover:bg-blue-50"
+              href="https://www.linkedin.com/in/saad-ali-79093921b/"
+              target="_blank"
+          >
+            <BsLinkedin />
+          </a>
 
-        <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 hover:text-black hover:bg-gray-100 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 dark:hover:text-black dark:hover:bg-gray-100"
-          href="https://github.com/SaadAli11"
-          target="_blank"
-        >
-          <FaGithub />
-        </a>
+          <a
+              className="bg-white p-4 text-gray-700 hover:text-black hover:bg-gray-100 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 dark:hover:text-black dark:hover:bg-gray-100"
+              href="https://github.com/SaadAli11"
+              target="_blank"
+          >
+            <FaGithub />
+          </a>
 
-        <a
-          className="bg-white p-3 text-gray-700 flex items-center gap-2 text-[1.55rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-orange-700 hover:bg-orange-50 active:scale-105 transition cursor-pointer borderBlack dark:hover:text-orange-700 dark:hover:bg-orange-50 dark:bg-white/10 dark:text-white/60"
-          href="https://stackoverflow.com/users/15426171/saad-ali"
-          target="_blank"
-        >
-          <FaStackOverflow />
-        </a>
+          <a
+              className="bg-white p-3 text-gray-700 flex items-center gap-2 text-[1.55rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-orange-700 hover:bg-orange-50 active:scale-105 transition cursor-pointer borderBlack dark:hover:text-orange-700 dark:hover:bg-orange-50 dark:bg-white/10 dark:text-white/60"
+              href="https://stackoverflow.com/users/15426171/saad-ali"
+              target="_blank"
+          >
+            <FaStackOverflow />
+          </a>
+        </div>
+
       </motion.div>
     </section>
   );

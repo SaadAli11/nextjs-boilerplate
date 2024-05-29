@@ -1,15 +1,44 @@
-"use client";
+"use client"
 
-import React from "react";
+import React, {useRef, useState} from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
-import { sendEmail } from "@/actions/sendEmail";
+// import { sendEmail } from "@/actions/sendEmail";
+
 import SubmitBtn from "./submit-btn";
+import emailjs from '@emailjs/browser';
+
 import toast from "react-hot-toast";
 
 export default function Contact() {
   const { ref } = useSectionInView("Contact");
+    const form = useRef();
+
+    const [loading, setLoading] = useState(false)
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        setLoading(true)
+
+        emailjs.sendForm('service_fg7rj6v', 'template_7kixw3s', form.current, {
+                publicKey: 'Hcm2vTAiXLgSgxhw7',
+            })
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                    toast.success("Email sent successfully!");
+                    form.current.reset();
+                    setLoading(false)
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                    toast.error(error.text);
+                    setLoading(false)
+                },
+            );
+    };
 
   return (
     <motion.section
@@ -41,33 +70,52 @@ export default function Contact() {
 
       <form
         className="mt-10 flex flex-col dark:text-black"
-        action={async (formData) => {
-          const { data, error } = await sendEmail(formData);
+        ref={form}
+        onSubmit={sendEmail}
 
-          if (error) {
-            toast.error(error);
-            return;
-          }
-
-          toast.success("Email sent successfully!");
-        }}
+        // action={async (formData) => {
+        //   const { data, error } = await sendEmail(formData);
+        //
+        //   if (error) {
+        //     toast.error(error);
+        //     return;
+        //   }
+        //
+        //   toast.success("Email sent successfully!");
+        // }}
       >
         <input
           className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="senderEmail"
+          type="text"
+          name="user_name"
+          required
+          maxLength={500}
+          placeholder="Name"
+        />
+          <input
+          className="h-14 px-4 mt-3 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          name="user_email"
           type="email"
           required
           maxLength={500}
-          placeholder="Your email"
+          placeholder="Email"
+        />
+        <input
+            className="h-14 mt-3 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+            type="text"
+            name="from_name"
+            required
+            maxLength={500}
+            placeholder="Subject"
         />
         <textarea
           className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
           name="message"
-          placeholder="Your message"
+          placeholder="Message"
           required
           maxLength={5000}
         />
-        <SubmitBtn />
+        <SubmitBtn loading={loading}/>
       </form>
     </motion.section>
   );
