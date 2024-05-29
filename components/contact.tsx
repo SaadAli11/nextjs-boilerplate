@@ -13,23 +13,30 @@ import toast from "react-hot-toast";
 
 export default function Contact() {
   const { ref } = useSectionInView("Contact");
-    const form = useRef();
+    const form = useRef<HTMLFormElement | null>(null);
+
 
     const [loading, setLoading] = useState(false)
 
-    const sendEmail = (e) => {
+    const sendEmail = (e: React.FormEvent) => {
         e.preventDefault();
 
         setLoading(true)
 
-        emailjs.sendForm('service_fg7rj6v', 'template_7kixw3s', form.current, {
+        if (!form.current) {
+            toast.error('Form reference is not available');
+            setLoading(false);
+            return;
+        }
+
+        emailjs.sendForm('service_fg7rj6v', 'template_7kixw3s', form.current!, {
                 publicKey: 'Hcm2vTAiXLgSgxhw7',
             })
             .then(
                 () => {
                     console.log('SUCCESS!');
                     toast.success("Email sent successfully!");
-                    form.current.reset();
+                    form.current?.reset()
                     setLoading(false)
                 },
                 (error) => {
